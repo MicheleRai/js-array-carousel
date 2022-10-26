@@ -42,14 +42,14 @@ const listEleImg = document.querySelectorAll('.slider-img');
 
 let activeIndex = 0;
 
-const firstClone = listEleImg[0].cloneNode(true);
-const lastClone = listEleImg[listEleImg.length - 1].cloneNode(true);
+// const firstClone = listEleImg[0].cloneNode(true);
+// const lastClone = listEleImg[listEleImg.length - 1].cloneNode(true);
 
-firstClone.id = 'first-clone';
-lastClone.id = 'last-clone';
+// firstClone.id = 'first-clone';
+// lastClone.id = 'last-clone';
 
-eleSlider.append(firstClone);
-eleSlider.prepend(lastClone);
+// eleSlider.append(firstClone);
+// eleSlider.prepend(lastClone);
 
 
 
@@ -57,7 +57,11 @@ eleBtnDown.addEventListener('click', function () {
 	
 	listEleImg[activeIndex].classList.remove('active');
 
+    if (activeIndex === (arrImages.length - 1)) {
+        activeIndex = 0;
+    }else{
 	activeIndex++;
+    }
 
 	listEleImg[activeIndex].classList.add('active');
 
@@ -71,7 +75,11 @@ eleBtnUp.addEventListener('click', function () {
 	
 	listEleImg[activeIndex].classList.remove('active');
 
+    if (activeIndex === 0) {
+        activeIndex = (arrImages.length - 1)
+    }else{
 	activeIndex--;
+    }
 
 	listEleImg[activeIndex].classList.add('active');
 
