@@ -37,11 +37,20 @@ for (let i = 0; i < arrImages.length; i++) {
 
 	eleSlider.append(eleImg);
 }
-// document.querySelector('.slider-img').classList.add('active');
 
-const listEleImg = document.querySelectorAll('.slider-img'); // non e' un array ma qualcosa di simile
+const listEleImg = document.querySelectorAll('.slider-img'); 
 
 let activeIndex = 0;
+
+const firstClone = listEleImg[0].cloneNode(true);
+const lastClone = listEleImg[listEleImg.length - 1].cloneNode(true);
+
+firstClone.id = 'first-clone';
+lastClone.id = 'last-clone';
+
+eleSlider.append(firstClone);
+eleSlider.prepend(lastClone);
+
 
 
 eleBtnDown.addEventListener('click', function () {
@@ -52,10 +61,10 @@ eleBtnDown.addEventListener('click', function () {
 
 	listEleImg[activeIndex].classList.add('active');
 
-	eleBtnUp.classList.remove('hidden');
-	if (activeIndex === listEleImg.length - 1) {
-		eleBtnDown.classList.add('hidden');
-	}
+	// eleBtnUp.classList.remove('hidden');
+	// if (activeIndex === listEleImg.length - 1) {
+	// 	eleBtnDown.classList.add('hidden');
+	// }
 });
 
 eleBtnUp.addEventListener('click', function () {
@@ -66,8 +75,8 @@ eleBtnUp.addEventListener('click', function () {
 
 	listEleImg[activeIndex].classList.add('active');
 
-	eleBtnDown.classList.remove('hidden');
-	if (activeIndex === 0) {
-		eleBtnUp.classList.add('hidden');
-	}
+	// eleBtnDown.classList.remove('hidden');
+	// if (activeIndex === 0) {
+	// 	eleBtnUp.classList.add('hidden');
+	// }
 });
